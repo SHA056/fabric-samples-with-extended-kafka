@@ -185,9 +185,9 @@ function networkUp() {
   fi
 
   if [ "$CONSENSUS_TYPE" == "kafka" ]; then
-    sleep 1
+    sleep 20
     echo "Sleeping 50s to allow $CONSENSUS_TYPE cluster to complete booting"
-    sleep 30
+    sleep 50
   fi
 
   if [ "$CONSENSUS_TYPE" == "etcdraft" ]; then
@@ -197,6 +197,7 @@ function networkUp() {
   fi
 
   # now run the end to end script
+  # sleep 30
   docker exec cli scripts/script.sh $CHANNEL_NAME $CLI_DELAY $LANGUAGE $CLI_TIMEOUT $VERBOSE
   if [ $? -ne 0 ]; then
     echo "ERROR !!!! Test failed"

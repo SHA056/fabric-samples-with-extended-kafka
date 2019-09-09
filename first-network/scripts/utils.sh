@@ -170,6 +170,9 @@ upgradeChaincode() {
 }
 
 chaincodeQuery() {
+  echo "Sleeping 120s to allow application to complete booting"
+  sleep 120   
+
   PEER=$1
   ORG=$2
   setGlobals $PEER $ORG
